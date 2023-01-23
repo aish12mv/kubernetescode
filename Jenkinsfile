@@ -26,7 +26,8 @@ node {
                
 //             }
   
-       app = docker.build("hclsw-gcp-xai/jenkins")
+      // app = docker.build("hclsw-gcp-xai/jenkins")
+       sh "gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
     }
 
     stage('Test image') {
