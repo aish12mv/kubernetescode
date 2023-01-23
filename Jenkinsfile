@@ -52,8 +52,8 @@ node {
     
         
         docker.withRegistry('https://us.gcr.io') {
-            myContainer.push("${env.BUILD_NUMBER}")
-            myContainer.push("latest")
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
         
 //         script{
