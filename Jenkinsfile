@@ -8,6 +8,23 @@ node {
     }
 
     stage('Build image') {
+//         steps {
+                
+//                 git branch: 'patch-1', url: 'gitrepository'
+
+//                 sh "mvn clean package"
+                
+//                 script {
+//                      dockerImage = docker.build registry
+//                       }
+//                 script {
+//                            docker.withRegistry( '', registryCredential ) {
+//                                 dockerImage.push()
+//                            }
+//                 }    
+
+               
+//             }
   
        app = docker.build("hclsw-gcp-xai/jenkins")
     }
@@ -31,6 +48,9 @@ node {
 //               echo "Pushing image To GCR"
 //               sh "docker push eu.gcr.io/${google_projectname}/${image_name}:${image-tag}"
 //           }
+        
+        myContainer.push("${env.BUILD_NUMBER}")
+        myContainer.push("latest")
         
         docker.withRegistry('https://us.gcr.io', 'gcr:hclsw-gcp-xai') {
             myContainer.push("${env.BUILD_NUMBER}")
