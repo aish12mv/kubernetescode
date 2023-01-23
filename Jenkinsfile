@@ -49,10 +49,9 @@ node {
 //               sh "docker push eu.gcr.io/${google_projectname}/${image_name}:${image-tag}"
 //           }
         
-        myContainer.push("${env.BUILD_NUMBER}")
-        myContainer.push("latest")
+    
         
-        docker.withRegistry('https://us.gcr.io', 'gcr:hclsw-gcp-xai') {
+        docker.withRegistry('https://us.gcr.io') {
             myContainer.push("${env.BUILD_NUMBER}")
             myContainer.push("latest")
         }
