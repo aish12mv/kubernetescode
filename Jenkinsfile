@@ -25,17 +25,18 @@ node {
 
                
 //             }
-        steps {
-            withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
-                sh '$GCLOUD_PATH/gcloud --version'
-                sh "$GCLOUD_PATH/gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
-            }
+//         steps {
+//             withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
+//                 sh '$GCLOUD_PATH/gcloud --version'
+//                 sh "$GCLOUD_PATH/gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
+//             }
 
 
-         }
+//          }
   
        app = docker.build("hclsw-gcp-xai/jenkins")
-       //sh "gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
+        sh 'echo "gcloud build"'
+       sh "gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
     }
 
     stage('Test image') {
