@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build image') {
-         app = docker.build("hclsw-gcp-xai/jenkins")
+         app = docker.build("hclsw-gcp-xai/jenkins/testimg")
         //steps {
 //             sh 'echo "gcloud build2"'
 //                 //Build the docker image
