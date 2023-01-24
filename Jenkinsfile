@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build image') {
-        steps {
+        //steps {
             sh 'echo "gcloud build2"'
                 //Build the docker image
                 sh'''
@@ -16,7 +16,7 @@ node {
                     $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
                     docker build . -t k8s-debian-test
                 '''
-            }
+            //}
 //         steps {
                 
 //                 git branch: 'patch-1', url: 'gitrepository'
