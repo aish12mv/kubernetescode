@@ -8,6 +8,15 @@ node {
     }
 
     stage('Build image') {
+        steps {
+            sh 'echo "gcloud build2"'
+                //Build the docker image
+                sh'''
+                    # Build the image
+                    $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
+                    docker build . -t k8s-debian-test
+                '''
+            }
 //         steps {
                 
 //                 git branch: 'patch-1', url: 'gitrepository'
@@ -33,18 +42,10 @@ node {
 
 
 //          } $(aws ecr get-login --region eu-west-1 --profile global --no-include-email)
-        steps {
-            sh 'echo "gcloud build2"'
-                //Build the docker image
-                sh'''
-                    # Build the image
-                    $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
-                    docker build . -t k8s-debian-test
-                '''
-            }
+        
   
-       app = docker.build("hclsw-gcp-xai/jenkins")
-        sh 'echo "gcloud build2"'
+       //app = docker.build("hclsw-gcp-xai/jenkins")
+        //sh 'echo "gcloud build2"'
        //sh "gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
     }
 
