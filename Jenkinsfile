@@ -13,8 +13,8 @@ node {
                 //Build the docker image
                 sh'''
                     # Build the image
-                    $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
-                    docker build . -t k8s-debian-test
+                   // $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
+                    docker build . -t hclsw-gcp-xai/jenkins
                 '''
             //}
 //         steps {
