@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build image') {
-         app = docker.build("hclsw-gcp-xai/jenkins/testimg")
+         app = docker.build("testimg")
        // app = docker.build("aishwaryamv/test")
         //steps {
 //             sh 'echo "gcloud build2"'
@@ -72,11 +72,13 @@ node {
 //           }
         
     
-        
-        docker.withRegistry('https://gcr.io/') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
+        sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+        sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+//         docker.withRegistry('https://gcr.io/') {
+//             sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+//             app.push("${env.BUILD_NUMBER}")
+//             app.push("latest")
+//         }
         
 //         script{
 //             docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins', 'ecr:us-east-2:aws-credentials') {
