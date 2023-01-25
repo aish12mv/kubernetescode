@@ -72,7 +72,7 @@ node {
         
     
         
-        docker.withRegistry('https://us.gcr.io') {
+        docker.withRegistry('https://gcr.io/') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
