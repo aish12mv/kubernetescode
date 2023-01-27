@@ -74,7 +74,7 @@ node {
     
       //  sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
       //  sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
-        docker.withRegistry('https://gcr.io/', 'newauth') {
+        docker.withRegistry('https://gcr.io/hclsw-gcp-xai', 'newauth') {
             sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
