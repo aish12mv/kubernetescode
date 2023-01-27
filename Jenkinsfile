@@ -72,13 +72,13 @@ node {
 //           }
         
     
-        sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
-        sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
-//         docker.withRegistry('https://gcr.io/') {
-//             sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
-//             app.push("${env.BUILD_NUMBER}")
-//             app.push("latest")
-//         }
+      //  sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+      //  sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+        docker.withRegistry('https://gcr.io/', 'gcrauth') {
+            sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
         
 //         script{
 //             docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins', 'ecr:us-east-2:aws-credentials') {
