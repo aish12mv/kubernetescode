@@ -79,13 +79,17 @@ node {
 //             app.push("${env.BUILD_NUMBER}")
 //             app.push("latest")
 //         }
-        
-        script{
-            docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins') {
+        docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
             }
-        }
+        
+//         script{
+//             docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins') {
+//             app.push("${env.BUILD_NUMBER}")
+//             app.push("latest")
+//             }
+//         }
         
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
