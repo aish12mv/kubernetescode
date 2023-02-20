@@ -2,57 +2,15 @@ node {
     def app
 
     stage('Clone repository') {
-      
-
         checkout scm
     }
 
     stage('Build image') {
         // app = docker.build("testimg")
         app = docker.build("aishwaryamv/test")
-        //steps {
-//             sh 'echo "gcloud build2"'
-//                 //Build the docker image
-//                 sh'''
-//                     # Build the image
-//                    // $(gcloud container clusters get-credentials xai-dev --zone us-east4-a --project hclsw-gcp-xai)
-//                     docker build . -t hclsw-gcp-xai/jenkins
-//                 '''
-            //}
-//         steps {
-                
-//                 git branch: 'patch-1', url: 'gitrepository'
-
-//                 sh "mvn clean package"
-                
-//                 script {
-//                      dockerImage = docker.build registry
-//                       }
-//                 script {
-//                            docker.withRegistry( '', registryCredential ) {
-//                                 dockerImage.push()
-//                            }
-//                 }    
-
-               
-//             }
-//         steps {
-//             withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
-//                 sh '$GCLOUD_PATH/gcloud --version'
-//                 sh "$GCLOUD_PATH/gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
-//             }
-
-
-//          } $(aws ecr get-login --region eu-west-1 --profile global --no-include-email)
-        
-  
-      
-        //sh 'echo "gcloud build2"'
-       //sh "gcloud builds submit --tag gcr.io/hclsw-gcp-xai/jenkins/test ."
     }
-
+    
     stage('Test image') {
-
        // app.inside {
            // sh 'echo "Tests passed"'
        // }
@@ -60,10 +18,8 @@ node {
 
     stage('Push image') {
 
-        
-    
-      sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
-        sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+//       sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
+//         sh "docker push gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
 //         docker.withRegistry('https://gcr.io/hclsw-gcp-xai', 'newauth') {
 //             sh "docker tag testimg gcr.io/hclsw-gcp-xai/jenkins/testimg:latest"
 //             app.push("${env.BUILD_NUMBER}")
@@ -74,12 +30,7 @@ node {
 //             app.push("latest")
 //             }
         
-//         script{
-//             docker.withRegistry('gcr.io/hclsw-gcp-xai/jenkins') {
-//             app.push("${env.BUILD_NUMBER}")
-//             app.push("latest")
-//             }
-//         }
+
         
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
