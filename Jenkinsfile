@@ -8,8 +8,8 @@ node {
     }
 
     stage('Build image') {
-         app = docker.build("testimg")
-       // app = docker.build("aishwaryamv/test")
+        // app = docker.build("testimg")
+        app = docker.build("aishwaryamv/test")
         //steps {
 //             sh 'echo "gcloud build2"'
 //                 //Build the docker image
