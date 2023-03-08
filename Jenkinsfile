@@ -1,3 +1,4 @@
+pip install pylint
 node {
     def app
 
