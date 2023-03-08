@@ -1,8 +1,9 @@
-pip install pylint
+
 node {
     def app
 
     stage('Clone repository') {
+        sh 'pip install pylint'
         checkout scm
     }
 
