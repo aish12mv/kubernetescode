@@ -3,7 +3,7 @@ node {
     def app
 
     stage('Clone repository') {
-        sh 'pip install pylint'
+        //sh 'pip install pylint'
         checkout scm
     }
 
