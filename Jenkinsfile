@@ -13,7 +13,7 @@ node {
     }
     
     stage('Test image') {
-        pylint --version
+        sh 'pylint --version'
        // app.inside {
            // sh 'echo "Tests passed"'
        // }
